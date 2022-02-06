@@ -1,0 +1,1 @@
+eletenode(root,6);
