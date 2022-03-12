@@ -8,24 +8,35 @@
 class Solution
 {
 public:
+    int ans;
     int lengthOfLIS(vector<int> &nums)
     {
-        vector<int> sorted;
-        map<int> index;
-        for (int i = 0; i < nums.size(); i++)
+        int n = nums.size();
+
+        // for (int i = 0; i < n; i++)
+        // {
+        //     for (int j = i + 1; j < n; j++)
+        //     {
+        //         if (nums[j] >)
+        //         {
+        //             /* code */
+        //         }
+        //     }
+        // }
+        vector<int> t(n, 1);
+        for (int i = 0; i < n; i++)
         {
-            if (index[nums[i]].count() == 0)
+            for (int j = 0; j < i; j++)
             {
-                index[nums[i]] = i;
-                sorted.push_back(nums[i]);
+                if (nums[i] > nums[j])
+                {
+                    t[i] = max(t[i], t[j] + 1);
+                }
             }
         }
-        sort(sorted.begin(),sorted.end());
-        for (int i = 0; i < sorted.size(); i++)
-        {
-            
-        }
-        
+        auto ans = * max_element(nums.begin(),nums.end());
+        return ans;
     }
+  
 };
 // @lc code=end
